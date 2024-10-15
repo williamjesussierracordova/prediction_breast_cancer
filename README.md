@@ -76,7 +76,7 @@ To make a breast cancer prediction, follow these steps:
    
   ```json
   {
-    "prediction": "Cander",
+    "prediction": "Cancer",
     "confidence": 0.87
   }
   ```
