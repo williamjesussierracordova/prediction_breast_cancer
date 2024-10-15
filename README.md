@@ -20,7 +20,8 @@ This project is an API developed in Python using TensorFlow, Keras, and Flask, w
    ```bash
    git clone https://github.com/your_username/your_repository.git
    cd your_repository
-  '''
+   ```
+   
 2. Install the required packages:
 
   ```bash
@@ -59,12 +60,12 @@ To make a breast cancer prediction, follow these steps:
   }
   ```
 3. The response will have the following format:
-   ```json
-   {
-    "prediction": "Cancer",
+  ```json
+  {
+    "prediction": "Cander",
     "confidence": 0.87
-   }
-   ```
+  }
+  ```
 
 ## Model Training
 
