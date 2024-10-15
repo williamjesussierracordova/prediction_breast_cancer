@@ -24,9 +24,10 @@ This project is an API developed in Python using TensorFlow, Keras, and Flask, w
    
 2. Install the required packages:
 
-  ```bash
-  pip install -r requirements.txt
-  ```
+   ```bash
+   pip install -r requirements.txt
+   ```
+
 3. Ensure that the data files X.npy and Y.npy are in the root directory of the project.
 
 ## Project Description
@@ -34,16 +35,23 @@ This project is an API developed in Python using TensorFlow, Keras, and Flask, w
 The project consists of the following steps:
 
 1. Data Loading and Preprocessing:
+   
   - Loads training data from .npy files.
   - Scales images between 0 and 1.
+    
 2. Model Definition and Training:
+   
   - Uses a Convolutional Neural Network (CNN) for cancer detection.
   - Includes normalization, pooling, and dropout layers to improve accuracy and prevent overfitting.
   - Adjusts the model using class_weight to handle class imbalances.
+    
 3. Single Image Prediction:
+   
   - Processes an image from a URL, resizes, and normalizes it for prediction.
   - The API returns the class prediction ("Cancer" or "No Cancer") and the associated confidence.
+    
 4. API Deployment:
+   
   - The Flask API exposes a /predict endpoint that receives an image URL and returns the prediction.
 
 ## Usage
