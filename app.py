@@ -13,8 +13,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-
 # Load and preprocess data
 def load_data():
     X = np.load('X.npy')
