@@ -34,40 +34,46 @@ This project is an API developed in Python using TensorFlow, Keras, and Flask, w
 
 The project consists of the following steps:
 
-1. Data Loading and Preprocessing:
+1. **Data Loading and Preprocessing**:
    
-  - Loads training data from .npy files.
-  - Scales images between 0 and 1.
+    - Loads training data from `.npy` files.
+    - Scales images between 0 and 1.
     
-2. Model Definition and Training:
+2. **Model Definition and Training**:
    
-  - Uses a Convolutional Neural Network (CNN) for cancer detection.
-  - Includes normalization, pooling, and dropout layers to improve accuracy and prevent overfitting.
-  - Adjusts the model using class_weight to handle class imbalances.
+    - Uses a Convolutional Neural Network (CNN) for cancer detection.
+    - Includes normalization, pooling, and dropout layers to improve accuracy and prevent overfitting.
+    - Adjusts the model using `class_weight` to handle class imbalances.
     
-3. Single Image Prediction:
+3. **Single Image Prediction**:
    
-  - Processes an image from a URL, resizes, and normalizes it for prediction.
-  - The API returns the class prediction ("Cancer" or "No Cancer") and the associated confidence.
+    - Processes an image from a URL, resizes, and normalizes it for prediction.
+    - The API returns the class prediction ("Cancer" or "No Cancer") and the associated confidence.
     
-4. API Deployment:
+4. **API Deployment**:
    
-  - The Flask API exposes a /predict endpoint that receives an image URL and returns the prediction.
+    - The Flask API exposes a `/predict` endpoint that receives an image URL and returns the prediction.
+
 
 ## Usage
 
 To make a breast cancer prediction, follow these steps:
 1. Run the API locally:
+   
   ```bash
   python app.py
   ```
-2. Send a POST request to the /predict endpoint with the following format:
+
+2. Send a POST request to the `/predict` endpoint with the following format:
+   
   ```json
   {
     "image_url": "IMAGE_URL"
   }
   ```
+
 3. The response will have the following format:
+   
   ```json
   {
     "prediction": "Cander",
@@ -77,7 +83,7 @@ To make a breast cancer prediction, follow these steps:
 
 ## Model Training
 
-The model is automatically trained if no breast_cancer_model.h5 file is found. If the file exists, the pretrained model will be loaded.
+The model is automatically trained if no `breast_cancer_model.h5` file is found. If the file exists, the pretrained model will be loaded.
 
 ## Deployment in Production
 
