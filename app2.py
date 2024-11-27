@@ -9,6 +9,7 @@ from flask import Flask, request, jsonify
 import requests
 from io import BytesIO
 from flask_cors import CORS
+import io
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -103,6 +104,35 @@ def predict():
         'confidence': confidence
     })
 
+@app.route('/predict_image', methods=['POST'])
+def predict_image():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file provided'}), 400
+    
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+    
+    try:
+        # Leer la imagen y preprocesarla
+        img = Image.open(io.BytesIO(file.read()))
+        img = img.resize((50, 50))
+        img_array = np.array(img) / 255.0
+        img_array = np.expand_dims(img_array, axis=0)
+        
+        # Hacer la predicción
+        prediction = model.predict(img_array)[0][0]
+        class_prediction = "IDC" if prediction > 0.5 else "No IDC"
+        confidence = float(prediction) if prediction > 0.5 else float(1 - prediction)
+        
+        return jsonify({
+            'prediction': class_prediction,
+            'confidence': confidence
+        })
+    
+    except Exception as e:
+        return jsonify({'error': f'Error processing image: {str(e)}'}), 400
+    
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)

@@ -1,0 +1,2 @@
+modelo_adn.h5 filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text
